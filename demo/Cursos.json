@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "titulo": "Introducción a la Programación",
+    "descripcion": "Aprende los fundamentos de la programación desde cero."
+  },
+  {
+    "id": 2,
+    "titulo": "Desarrollo Web con HTML y CSS",
+    "descripcion": "Crea sitios web estáticos utilizando HTML y CSS."
+  },
+  {
+    "id": 3,
+    "titulo": "JavaScript para Principiantes",
+    "descripcion": "Domina los conceptos básicos de JavaScript."
+  },
+  {
+    "id": 4,
+    "titulo": "Bases de Datos SQL",
+    "descripcion": "Aprende a manejar bases de datos relacionales con SQL."
+  },
+  {
+    "id": 5,
+    "titulo": "Python para Ciencia de Datos",
+    "descripcion": "Introducción a Python aplicado a la ciencia de datos."
+  },
+  {
+    "id": 6,
+    "titulo": "Diseño Gráfico con Adobe Illustrator",
+    "descripcion": "Aprende a crear gráficos vectoriales profesionales."
+  },
+  {
+    "id": 7,
+    "titulo": "Marketing Digital",
+    "descripcion": "Estrategias efectivas para promocionar tu negocio en línea."
+  },
+  {
+    "id": 8,
+    "titulo": "Fotografía Digital",
+    "descripcion": "Domina las técnicas básicas de fotografía digital."
+  },
+  {
+    "id": 9,
+    "titulo": "Desarrollo de Aplicaciones Móviles",
+    "descripcion": "Crea aplicaciones móviles para Android e iOS."
+  },
+  {
+    "id": 10,
+    "titulo": "Machine Learning con Python",
+    "descripcion": "Introducción a los algoritmos de aprendizaje automático."
+  },
+  {
+    "id": 11,
+    "titulo": "Diseño UX/UI",
+    "descripcion": "Aprende a diseñar interfaces de usuario efectivas."
+  },
+  {
+    "id": 12,
+    "titulo": "Gestión de Proyectos con Agile",
+    "descripcion": "Metodologías ágiles para la gestión de proyectos."
+  },
+  {
+    "id": 13,
+    "titulo": "Redes y Seguridad Informática",
+    "descripcion": "Fundamentos de redes y seguridad en sistemas informáticos."
+  },
+  {
+    "id": 14,
+    "titulo": "Inglés para Negocios",
+    "descripcion": "Mejora tu inglés en contextos profesionales."
+  },
+  {
+    "id": 15,
+    "titulo": "Finanzas Personales",
+    "descripcion": "Aprende a gestionar tus finanzas de manera efectiva."
+  },
+  {
+    "id": 16,
+    "titulo": "Desarrollo de Videojuegos con Unity",
+    "descripcion": "Crea videojuegos utilizando el motor Unity."
+  },
+  {
+    "id": 17,
+    "titulo": "Inteligencia Artificial Básica",
+    "descripcion": "Conceptos fundamentales de inteligencia artificial."
+  },
+  {
+    "id": 18,
+    "titulo": "Diseño de Experiencias de Usuario",
+    "descripcion": "Aprende a diseñar experiencias centradas en el usuario."
+  },
+  {
+    "id": 19,
+    "titulo": "Programación en Java",
+    "descripcion": "Domina el lenguaje de programación Java."
+  },
+  {
+    "id": 20,
+    "titulo": "Cloud Computing con AWS",
+    "descripcion": "Introducción a los servicios en la nube de Amazon Web Services."
+  }
+]

@@ -1,11 +1,11 @@
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
-export default function NotFound () {
+export default function Reports () {
   return (
     <div>
       <NavBar />
-      <h1>ERROR 404</h1>
+      <h1>REPORTES</h1>
       <Footer />
     </div>
   )
