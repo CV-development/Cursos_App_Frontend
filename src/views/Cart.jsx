@@ -1,5 +1,12 @@
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
+
 export default function Cart () {
   return (
-    <div>Cart</div>
+    <div>
+      <NavBar />
+      <h1>CARRO</h1>
+      <Footer />
+    </div>
   )
 }
