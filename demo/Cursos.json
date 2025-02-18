@@ -2,101 +2,120 @@
   {
     "id": 1,
     "titulo": "Introducción a la Programación",
-    "descripcion": "Aprende los fundamentos de la programación desde cero."
+    "descripcion": "Aprende los fundamentos de la programación desde cero.",
+    "precio": 47155,
+    "instructor": "Carlos Pérez"
   },
   {
     "id": 2,
     "titulo": "Desarrollo Web con HTML y CSS",
-    "descripcion": "Crea sitios web estáticos utilizando HTML y CSS."
+    "descripcion": "Crea sitios web estáticos utilizando HTML y CSS.",
+    "precio": 56589,
+    "instructor": "Ana Rodríguez"
   },
   {
     "id": 3,
     "titulo": "JavaScript para Principiantes",
-    "descripcion": "Domina los conceptos básicos de JavaScript."
+    "descripcion": "Domina los conceptos básicos de JavaScript.",
+    "precio": 66023,
+    "instructor": "Luis García"
   },
   {
     "id": 4,
     "titulo": "Bases de Datos SQL",
-    "descripcion": "Aprende a manejar bases de datos relacionales con SQL."
+    "descripcion": "Aprende a manejar bases de datos relacionales con SQL.",
+    "precio": 75457,
+    "instructor": "Sofía Martínez"
   },
   {
     "id": 5,
     "titulo": "Python para Ciencia de Datos",
-    "descripcion": "Introducción a Python aplicado a la ciencia de datos."
+    "descripcion": "Introducción a Python aplicado a la ciencia de datos.",
+    "precio": 84891,
+    "instructor": "Javier López"
   },
   {
     "id": 6,
     "titulo": "Diseño Gráfico con Adobe Illustrator",
-    "descripcion": "Aprende a crear gráficos vectoriales profesionales."
+    "descripcion": "Aprende a crear gráficos vectoriales profesionales.",
+    "precio": 51883,
+    "instructor": "Elena Sánchez"
   },
   {
     "id": 7,
     "titulo": "Marketing Digital",
-    "descripcion": "Estrategias efectivas para promocionar tu negocio en línea."
+    "descripcion": "Estrategias efectivas para promocionar tu negocio en línea.",
+    "precio": 61317,
+    "instructor": "Manuel Torres"
   },
   {
     "id": 8,
     "titulo": "Fotografía Digital",
-    "descripcion": "Domina las técnicas básicas de fotografía digital."
+    "descripcion": "Domina las técnicas básicas de fotografía digital.",
+    "precio": 42411,
+    "instructor": "Isabel Fernández"
   },
   {
     "id": 9,
     "titulo": "Desarrollo de Aplicaciones Móviles",
-    "descripcion": "Crea aplicaciones móviles para Android e iOS."
+    "descripcion": "Crea aplicaciones móviles para Android e iOS.",
+    "precio": 94445,
+    "instructor": "David Ramírez"
   },
-  {
-    "id": 10,
-    "titulo": "Machine Learning con Python",
-    "descripcion": "Introducción a los algoritmos de aprendizaje automático."
-  },
-  {
-    "id": 11,
-    "titulo": "Diseño UX/UI",
-    "descripcion": "Aprende a diseñar interfaces de usuario efectivas."
-  },
-  {
-    "id": 12,
-    "titulo": "Gestión de Proyectos con Agile",
-    "descripcion": "Metodologías ágiles para la gestión de proyectos."
-  },
-  {
-    "id": 13,
-    "titulo": "Redes y Seguridad Informática",
-    "descripcion": "Fundamentos de redes y seguridad en sistemas informáticos."
-  },
-  {
-    "id": 14,
-    "titulo": "Inglés para Negocios",
-    "descripcion": "Mejora tu inglés en contextos profesionales."
-  },
-  {
-    "id": 15,
-    "titulo": "Finanzas Personales",
-    "descripcion": "Aprende a gestionar tus finanzas de manera efectiva."
-  },
-  {
-    "id": 16,
-    "titulo": "Desarrollo de Videojuegos con Unity",
-    "descripcion": "Crea videojuegos utilizando el motor Unity."
-  },
-  {
-    "id": 17,
-    "titulo": "Inteligencia Artificial Básica",
-    "descripcion": "Conceptos fundamentales de inteligencia artificial."
-  },
-  {
-    "id": 18,
-    "titulo": "Diseño de Experiencias de Usuario",
-    "descripcion": "Aprende a diseñar experiencias centradas en el usuario."
-  },
-  {
-    "id": 19,
-    "titulo": "Programación en Java",
-    "descripcion": "Domina el lenguaje de programación Java."
-  },
-  {
-    "id": 20,
-    "titulo": "Cloud Computing con AWS",
-    "descripcion": "Introducción a los servicios en la nube de Amazon Web Services."
-  }
+   {
+  	"id":10,
+  	"titulo":"Machine Learning con Python",
+  	"descripcion":"Introducción a los algoritmos de aprendizaje automático.",
+  	"precio":"103711",
+  	"instructor":"Carolina Ruiz"
+   },
+   {
+  	"id":11,
+  	"titulo":"Diseño UX/UI",
+  	"descripcion":"Aprende a diseñar interfaces de usuario efectivas.",
+  	"precio":"70745",
+  	"instructor":"Ricardo Díaz"
+   },
+   {
+  	"id":12,
+  	"titulo":"Gestión de Proyectos con Agile",
+  	"descripcion":"Metodologías ágiles para la gestión de proyectos.",
+  	"precio":"51883",
+  	"instructor":"Patricia Herrera"
+   },
+   {
+  	"id":13,
+  	"titulo":"Redes y Seguridad Informática",
+  	"descripcion":"Fundamentos de redes y seguridad en sistemas informáticos.",
+  	"precio":"80171",
+  	"instructor":"Andrés Navarro"
+   },
+   {
+  	"id":14,
+  	"titulo":"Inglés para Negocios",
+  	"descripcion":"Mejora tu inglés en contextos profesionales.",
+  	"precio":"37688",
+  	"instructor":"Valeria Castro"
+   },
+   {
+  	"id":15,
+  	"titulo":"Finanzas Personales",
+  	"descripcion":"Aprende a gestionar tus finanzas de manera efectiva.",
+  	"precio":"28305",
+  	"instructor":"Jorge Vargas"
+   },
+   {
+  	"id":16,
+  	"titulo":"Desarrollo de Videojuegos con Unity",
+  	"descripcion":"Crea videojuegos utilizando el motor Unity.",
+  	"precio":"89703",
+  	"instructor":"Daniel Jiménez"
+   },
+   {
+  	"id":17,
+  	"titulo":"Inteligencia Artificial Básica",
+  	"descripcion":"Conceptos fundamentales de inteligencia artificial.",
+  	"precio":"108734",
+  	"instructor":"Adriana Collado"
+   }
 ]

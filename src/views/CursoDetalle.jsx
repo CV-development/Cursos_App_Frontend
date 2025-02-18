@@ -27,7 +27,7 @@ export default function CursoDetalle() {
     <div>
       <NavBar />
       <h1>{curso.titulo}</h1>
-      <p>{curso.titulo}</p>
+      <p>{curso.descripcion}</p>
       <Footer />
     </div>
   )
