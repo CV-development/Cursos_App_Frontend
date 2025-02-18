@@ -4,11 +4,11 @@ import UserProvider from '../context/UserContext'
 export default function AppProvider ({ children }) {
   return (
 
-    <CursosProvider>
-      
+    <UserProvider>
+      <CursosProvider>
         {children}
-      
-    </CursosProvider>
+      </CursosProvider>
+    </UserProvider>
 
   )
 }

@@ -6,6 +6,7 @@ import { CursosContext } from '../context/CursosContext'
 
 export default function Home () {
   const { cursos } = useContext(CursosContext)
+
   return (
     <div>
       <NavBar />

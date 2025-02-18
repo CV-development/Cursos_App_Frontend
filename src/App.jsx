@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Home from './views/Home'
-import Curso from './views/Curso'
+import CursoDetalle from './views/CursoDetalle'
 import Login from './views/Login'
 import Register from './views/Register'
 import Cart from './views/Cart'
@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/curso/:cursoId' element={<Curso />} />
+        <Route path='/curso/:cursoId' element={<CursoDetalle />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/cart' element={<Cart />} />
