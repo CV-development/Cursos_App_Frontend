@@ -4,28 +4,13 @@
     "cursos": [
       {
         "id_curso": 1,
-        "nombre": "Curso de React",
-        "precio": 29.99
+        "nombre": "Introducción a la Programación",
+        "precio": 47155
       },
       {
         "id_curso": 2,
-        "nombre": "Curso de JavaScript",
-        "precio": 19.99
-      },
-      {
-        "id_curso": 3,
-        "nombre": "Curso de Python",
-        "precio": 24.99
-      },
-      {
-        "id_curso": 4,
-        "nombre": "Curso de HTML y CSS",
-        "precio": 15.99
-      },
-      {
-        "id_curso": 5,
-        "nombre": "Curso de Node.js",
-        "precio": 34.99
+        "nombre": "Desarrollo Web con HTML y CSS",
+        "precio": 56589
       }
     ]
   }
