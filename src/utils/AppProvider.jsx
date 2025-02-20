@@ -2,9 +2,8 @@ import CartProvider from '../context/CartContext'
 import CursosProvider from '../context/CursosContext'
 import UserProvider from '../context/UserContext'
 
-export default function AppProvider ({ children }) {
+export default function AppProvider({ children }) {
   return (
-
     <UserProvider>
       <CursosProvider>
         <CartProvider>
@@ -12,6 +11,5 @@ export default function AppProvider ({ children }) {
         </CartProvider>
       </CursosProvider>
     </UserProvider>
-
-  )
+  );
 }
