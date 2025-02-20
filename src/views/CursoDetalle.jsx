@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import React, { useContext } from 'react'
 import { CursosContext } from '../context/CursosContext'
 import { useParams } from 'react-router-dom'
+import CursoCard from '../components/CursoCard'
 
 export default function CursoDetalle() {
   const { cursos, loading, error } = useContext(CursosContext)
@@ -26,8 +27,7 @@ export default function CursoDetalle() {
   return (
     <div>
       <NavBar />
-      <h1>{curso.titulo}</h1>
-      <p>{curso.descripcion}</p>
+      <CursoCard curso={curso} />
       <Footer />
     </div>
   )

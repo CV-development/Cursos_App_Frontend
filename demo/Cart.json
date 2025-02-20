@@ -1,0 +1,17 @@
+[
+  {
+    "id_usuario": "1",
+    "cursos": [
+      {
+        "id_curso": 1,
+        "nombre": "Introducción a la Programación",
+        "precio": 47155
+      },
+      {
+        "id_curso": 2,
+        "nombre": "Desarrollo Web con HTML y CSS",
+        "precio": 56589
+      }
+    ]
+  }
+]
