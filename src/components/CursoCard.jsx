@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import './CursoCard.css' // Import the CSS file for custom styles
 
 function CursoCard({ curso }) {
   const { addToCart } = useContext(CartContext)
@@ -16,19 +17,19 @@ function CursoCard({ curso }) {
   }
 
   return (
-    <Card bg="primary" text="white" style={{ width: '18rem' }} className="m-4">
+    <Card className="curso-card m-4">
       <Card.Body>
         <Link to={`/curso/${curso.id}`}>
-          <Card.Title style={{ color: 'white' }}>{curso.titulo}</Card.Title>
+          <Card.Title className="curso-title">{curso.titulo}</Card.Title>
         </Link>
-        <Card.Text>Descripción: {curso.descripcion}</Card.Text>
-        <Card.Text>
+        <Card.Text className="curso-description">Descripción: {curso.descripcion}</Card.Text>
+        <Card.Text className="curso-instructor">
           <b>Instructor:</b> {curso.instructor}
         </Card.Text>
-        <Card.Text>
+        <Card.Text className="curso-price">
           <b>Precio: </b> {curso.precio}
         </Card.Text>
-        <Button variant="light" onClick={handleAddToCart}>
+        <Button variant="light" onClick={handleAddToCart} className="add-to-cart-button">
           Agregar al Carro
         </Button>
       </Card.Body>
