@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import { CursosContext } from '../context/CursosContext'
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 
 export default function ModificarCurso() {
   const { cursos, putCurso } = useContext(CursosContext)
@@ -12,9 +13,10 @@ export default function ModificarCurso() {
     precio: '',
     instructor: ''
   })
+  const [searchId, setSearchId] = useState('')
 
-  const handleSearch = (id) => {
-    const curso = cursos.find((c) => c.id === parseInt(id))
+  const handleSearch = () => {
+    const curso = cursos.find((c) => c.id === parseInt(searchId))
     if (curso) {
       setSelectedCurso(curso)
       setFormData({
@@ -46,55 +48,74 @@ export default function ModificarCurso() {
   return (
     <div>
       <NavBar />
-      <h1>Modificar Curso</h1>
-      <div>
-        <input
-          type="number"
-          placeholder="ID del curso"
-          onBlur={(e) => handleSearch(e.target.value)}
-        />
-      </div>
-      {selectedCurso && (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Título:</label>
-            <input
-              type="text"
-              name="titulo"
-              value={formData.titulo}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Descripción:</label>
-            <input
-              type="text"
-              name="descripcion"
-              value={formData.descripcion}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Precio:</label>
-            <input
-              type="number"
-              name="precio"
-              value={formData.precio}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Instructor:</label>
-            <input
-              type="text"
-              name="instructor"
-              value={formData.instructor}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit">Modificar</button>
-        </form>
-      )}
+      <Container>
+        <h1 className="my-4">Modificar Curso</h1>
+        <Form>
+          <Form.Group as={Row} className="mb-3">
+            <Form.Label column sm="2">ID del curso</Form.Label>
+            <Col sm="8">
+              <Form.Control
+                type="number"
+                placeholder="ID del curso"
+                value={searchId}
+                onChange={(e) => setSearchId(e.target.value)}
+              />
+            </Col>
+            <Col sm="2">
+              <Button variant="primary" onClick={handleSearch}>Buscar</Button>
+            </Col>
+          </Form.Group>
+        </Form>
+        {selectedCurso && (
+          <Form onSubmit={handleSubmit}>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">Título</Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  type="text"
+                  name="titulo"
+                  value={formData.titulo}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">Descripción</Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  type="text"
+                  name="descripcion"
+                  value={formData.descripcion}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">Precio</Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  type="number"
+                  name="precio"
+                  value={formData.precio}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">Instructor</Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  type="text"
+                  name="instructor"
+                  value={formData.instructor}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Button variant="primary" type="submit">Modificar</Button>
+          </Form>
+        )}
+      </Container>
       <Footer />
     </div>
   )

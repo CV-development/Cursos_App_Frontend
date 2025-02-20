@@ -27,9 +27,9 @@ const CursosProvider = ({ children }) => {
 
   const putCurso = async (id, cursoActualizado) => {
     try {
-      const res = await axios.put(`${URL}/${id}`, cursoActualizado)
+      const res = await axios.put(URL, cursos.map((curso) => (curso.id === id ? cursoActualizado : curso)))
       setCursos(
-        cursos.map((curso) => (curso.id === id ? res.data : curso))
+        cursos.map((curso) => (curso.id === id ? cursoActualizado : curso))
       )
     } catch (error) {
       console.error('Error al editar el curso:', error)
@@ -52,7 +52,7 @@ const CursosProvider = ({ children }) => {
   console.log(cursos)
 
   return (
-    <CursosContext.Provider value={{ cursos }}>
+    <CursosContext.Provider value={{ cursos, postCurso, putCurso, deleteCurso }}>
       {children}
     </CursosContext.Provider>
   )
