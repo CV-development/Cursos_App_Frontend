@@ -1,10 +1,12 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { CursosContext } from './CursosContext'
 
 export const CartContext = createContext()
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
+  const { cursos } = useContext(CursosContext)
   const URL = '../demo/Cart.json'
 
   const loadCart = async () => {
@@ -18,20 +20,17 @@ const CartProvider = ({ children }) => {
 
   const saveCart = async (newCart) => {
     try {
-      await axios.put(URL, newCart) // Usa PUT para reemplazar todo el contenido
-      setCart(newCart) // Actualiza el estado local con el nuevo carrito
+      await axios.put(URL, newCart)
+      setCart(newCart)
     } catch (error) {
       console.error('Error al guardar el carrito:', error)
     }
   }
 
-  const addToCart = (curso, idUsuario) => {
-    const cursoExistente = cart.find(
-      (item) => item.id_usuario === idUsuario && item.cursos.some((cursoId) => cursoId === curso.id)
-    )
-
-    if (cursoExistente) {
-      console.log('El curso ya está en el carrito de compras de este usuario.')
+  const addToCart = (cursoId, idUsuario) => {
+    const curso = cursos.find((c) => c.id === cursoId)
+    if (!curso) {
+      console.error('Curso no encontrado')
       return
     }
 
@@ -39,27 +38,32 @@ const CartProvider = ({ children }) => {
 
     let updatedCart
     if (userInCart) {
+      const cursoExistente = userInCart.cursos.some((c) => c.id_curso === cursoId)
+      if (cursoExistente) {
+        console.log('El curso ya está en el carrito de compras de este usuario.')
+        return
+      }
       updatedCart = cart.map((item) =>
-        item.id_usuario === idUsuario ? { ...item, cursos: [...item.cursos, curso.id] } : item
+        item.id_usuario === idUsuario ? { ...item, cursos: [...item.cursos, { id_curso: curso.id, nombre: curso.titulo, precio: curso.precio }] } : item
       )
     } else {
-      updatedCart = [...cart, { id_usuario: idUsuario, cursos: [curso.id] }]
+      updatedCart = [...cart, { id_usuario: idUsuario, cursos: [{ id_curso: curso.id, nombre: curso.titulo, precio: curso.precio }] }]
     }
-    saveCart(updatedCart) // Guarda el carrito actualizado
+    saveCart(updatedCart)
   }
 
   const deleteFromCart = (cursoId, idUsuario) => {
     const updatedCart = cart.map((item) =>
       item.id_usuario === idUsuario
-        ? { ...item, cursos: item.cursos.filter((id) => id !== cursoId) }
+        ? { ...item, cursos: item.cursos.filter((c) => c.id_curso !== cursoId) }
         : item
-    ).filter((item) => item.cursos.length > 0)
+    ).filter((item) => item.id_usuario !== idUsuario || item.cursos.length > 0)
 
-    saveCart(updatedCart) // Guarda el carrito actualizado
+    saveCart(updatedCart)
   }
 
   useEffect(() => {
-    loadCart() // Carga el carrito al montar el componente
+    loadCart()
   }, [])
 
   return (

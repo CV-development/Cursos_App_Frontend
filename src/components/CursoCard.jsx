@@ -5,12 +5,12 @@ import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 
 function CursoCard({ curso }) {
-  const { addToCart } = useContext(CartContext) // Usa el CarritoContext
+  const { addToCart } = useContext(CartContext)
 
   const handleAddToCart = () => {
     const idUsuario = "1" // Se debe reemplazar con la lógica del provider cuando esté listo
 
-    addToCart(curso, idUsuario) // Llama a la función para agregar al carrito
+    addToCart(curso.id, idUsuario) // Llama a la función para agregar al carrito
 
     alert(`Curso "${curso.titulo}" agregado al carro`)
   }
