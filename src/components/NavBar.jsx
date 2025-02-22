@@ -103,4 +103,4 @@ const styles = {
 };
 
 // Exportar componente
-export default NavBar;
+export default NavBar

@@ -137,4 +137,4 @@ const styles = {
 };
 
 // Exportar componente
-export default Login;
+export default Login
