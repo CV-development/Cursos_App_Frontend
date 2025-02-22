@@ -18,7 +18,7 @@ const CursosProvider = ({ children }) => {
 
   const postCurso = async (curso) => {
     try {
-      const res = await axios.post(URL)
+      const res = await axios.post(URL, curso)
       setCursos([...cursos, res.data])
     } catch (error) {
       console.error('Error al crear el curso:', error)
@@ -27,7 +27,7 @@ const CursosProvider = ({ children }) => {
 
   const putCurso = async (id, cursoActualizado) => {
     try {
-      const res = await axios.put(URL, cursos.map((curso) => (curso.id === id ? cursoActualizado : curso)))
+      const res = await axios.put(`${URL}/${id}`, cursoActualizado)
       setCursos(
         cursos.map((curso) => (curso.id === id ? cursoActualizado : curso))
       )
