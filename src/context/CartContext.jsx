@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 import { CursosContext } from './CursosContext'
 
 export const CartContext = createContext()
@@ -7,11 +7,10 @@ export const CartContext = createContext()
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   const { cursos } = useContext(CursosContext)
-  const URL = '../demo/Cart.json'
 
   const loadCart = async () => {
     try {
-      const response = await axios.get(URL)
+      const response = await api.get('/api/carro')
       setCart(response.data)
     } catch (error) {
       console.error('Error al cargar el carrito:', error)
@@ -20,7 +19,7 @@ const CartProvider = ({ children }) => {
 
   const saveCart = async (newCart) => {
     try {
-      await axios.put(URL, newCart)
+      await api.put('/api/carro', newCart)
       setCart(newCart)
     } catch (error) {
       console.error('Error al guardar el carrito:', error)
