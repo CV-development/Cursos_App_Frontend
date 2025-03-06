@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../services/api'
 
 export const UserContext = createContext()
 
@@ -15,35 +16,30 @@ export function UserProvider({ children }) {
     }
   }, [])
 
-  // Función para registrar usuario con nombre
-  const registerUser = (name, email, password) => {
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || []
-
-    if (storedUsers.some(user => user.email === email)) {
-      alert('El usuario ya está registrado.')
-      return
+  // Función para registrar usuario
+  const registerUser = async (email, password) => {
+    try {
+      const res = await api.post('/api/auth/register', { email, password })
+      const newUser = res.data
+      setUser(newUser)
+      localStorage.setItem('loggedUser', JSON.stringify(newUser))
+      navigate('/perfil')
+    } catch (error) {
+      console.error('Error al registrar usuario:', error)
+      alert('Error al registrar usuario.')
     }
-
-    const newUser = { name, email, password }
-    storedUsers.push(newUser)
-    localStorage.setItem('users', JSON.stringify(storedUsers))
-
-    setUser(newUser)
-    localStorage.setItem('loggedUser', JSON.stringify(newUser))
-    navigate('/perfil')
   }
 
-  // Función para iniciar sesión con validaciones
-  const loginUser = (email, password) => {
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || []
-
-    const foundUser = storedUsers.find(user => user.email === email && user.password === password)
-
-    if (foundUser) {
-      setUser(foundUser)
-      localStorage.setItem('loggedUser', JSON.stringify(foundUser))
+  // Función para iniciar sesión
+  const loginUser = async (email, password) => {
+    try {
+      const res = await api.post('/api/auth/login', { email, password })
+      const loggedInUser = res.data
+      setUser(loggedInUser)
+      localStorage.setItem('loggedUser', JSON.stringify(loggedInUser))
       navigate('/perfil')
-    } else {
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error)
       alert('Credenciales incorrectas o usuario no registrado.')
     }
   }

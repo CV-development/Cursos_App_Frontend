@@ -1,15 +1,14 @@
 import { createContext, useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 
 export const CursosContext = createContext()
 
 const CursosProvider = ({ children }) => {
   const [cursos, setCursos] = useState([])
-  const URL = '../demo/Cursos.json'
 
   const getCursos = async () => {
     try {
-      const res = await axios.get(URL)
+      const res = await api.get('/api/cursos')
       setCursos(res.data)
     } catch (error) {
       console.log('Error al obtener los cursos:', error)
@@ -18,7 +17,7 @@ const CursosProvider = ({ children }) => {
 
   const postCurso = async (curso) => {
     try {
-      const res = await axios.post(URL, curso)
+      const res = await api.post('/api/cursos', curso)
       setCursos([...cursos, res.data])
     } catch (error) {
       console.error('Error al crear el curso:', error)
@@ -27,9 +26,9 @@ const CursosProvider = ({ children }) => {
 
   const putCurso = async (id, cursoActualizado) => {
     try {
-      const res = await axios.put(`${URL}/${id}`, cursoActualizado)
+      const res = await api.put(`/api/cursos/${id}`, cursoActualizado)
       setCursos(
-        cursos.map((curso) => (curso.id === id ? cursoActualizado : curso))
+        cursos.map((curso) => (curso.id === id ? res.data : curso))
       )
     } catch (error) {
       console.error('Error al editar el curso:', error)
@@ -38,7 +37,7 @@ const CursosProvider = ({ children }) => {
 
   const deleteCurso = async (id) => {
     try {
-      await axios.delete(`${URL}/${id}`)
+      await api.delete(`/api/cursos/${id}`)
       setCursos(cursos.filter((curso) => curso.id !== id))
     } catch (error) {
       console.error('Error al eliminar el curso:', error)
@@ -48,8 +47,6 @@ const CursosProvider = ({ children }) => {
   useEffect(() => {
     getCursos()
   }, [])
-
-  console.log(cursos)
 
   return (
     <CursosContext.Provider value={{ cursos, postCurso, putCurso, deleteCurso }}>
