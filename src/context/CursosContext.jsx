@@ -9,6 +9,7 @@ const CursosProvider = ({ children }) => {
   const getCursos = async () => {
     try {
       const res = await api.get('/api/cursos')
+      console.log('Cursos cargados:', res.data) // Mensaje de depuración
       setCursos(res.data)
     } catch (error) {
       console.log('Error al obtener los cursos:', error)

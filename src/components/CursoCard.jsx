@@ -14,6 +14,7 @@ function CursoCard({ curso }) {
     const fetchCursoData = async () => {
       try {
         const res = await api.get(`/api/cursos/${curso.id}`)
+        console.log('Datos del curso cargados en CursoCard:', res.data) // Mensaje de depuración
         setCursoData(res.data)
       } catch (error) {
         console.error('Error al obtener los datos del curso:', error)
