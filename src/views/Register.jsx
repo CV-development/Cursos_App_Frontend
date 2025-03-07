@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
+import api from '../services/api'
 
 function Register() {
   const { registerUser } = useContext(UserContext);
@@ -12,7 +15,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -20,71 +23,80 @@ function Register() {
       return;
     }
 
-    registerUser(name, email, password);
-    navigate("/perfil"); // Redirige a perfil tras el registro
+    try {
+      await api.post('/api/auth/register', { name, email, password });
+      navigate("/perfil"); // Redirige a perfil tras el registro
+    } catch (error) {
+      console.error('Error al registrar usuario:', error);
+      setError('Error al registrar usuario.');
+    }
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h2 style={styles.title}>Registro</h2>
+    <>
+      <NavBar />
+      <div style={styles.container}>
+        <div style={styles.card}>
+          <h2 style={styles.title}>Registro</h2>
 
-        {error && <p style={styles.error}>{error}</p>}
+          {error && <p style={styles.error}>{error}</p>}
 
-        <form onSubmit={handleSubmit} style={styles.form}>
-          <label style={styles.label}>Nombre</label>
-          <input
-            type="text"
-            placeholder="Ingresa tu nombre"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            style={styles.input}
-          />
+          <form onSubmit={handleSubmit} style={styles.form}>
+            <label style={styles.label}>Nombre</label>
+            <input
+              type="text"
+              placeholder="Ingresa tu nombre"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              style={styles.input}
+            />
 
-          <label style={styles.label}>Correo Electrónico</label>
-          <input
-            type="email"
-            placeholder="Ingresa tu correo"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={styles.input}
-          />
+            <label style={styles.label}>Correo Electrónico</label>
+            <input
+              type="email"
+              placeholder="Ingresa tu correo"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={styles.input}
+            />
 
-          <label style={styles.label}>Contraseña</label>
-          <input
-            type="password"
-            placeholder="Crea una contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={styles.input}
-          />
+            <label style={styles.label}>Contraseña</label>
+            <input
+              type="password"
+              placeholder="Crea una contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
 
-          <label style={styles.label}>Confirmar Contraseña</label>
-          <input
-            type="password"
-            placeholder="Repite tu contraseña"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            style={styles.input}
-          />
+            <label style={styles.label}>Confirmar Contraseña</label>
+            <input
+              type="password"
+              placeholder="Repite tu contraseña"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
 
-          <button type="submit" style={{ ...styles.button, ...styles.primaryButton }}>
-            Registrarse
-          </button>
-        </form>
+            <button type="submit" style={{ ...styles.button, ...styles.primaryButton }}>
+              Registrarse
+            </button>
+          </form>
 
-        <p style={styles.text}>
-          ¿Ya tienes una cuenta?{" "}
-          <span style={styles.link} onClick={() => navigate("/login")}>
-            Inicia Sesión aquí
-          </span>
-        </p>
+          <p style={styles.text}>
+            ¿Ya tienes una cuenta?{" "}
+            <span style={styles.link} onClick={() => navigate("/login")}>
+              Inicia Sesión aquí
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

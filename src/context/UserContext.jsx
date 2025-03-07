@@ -20,6 +20,7 @@ export function UserProvider({ children }) {
   const registerUser = async (email, password) => {
     try {
       const res = await api.post('/api/auth/register', { email, password })
+      console.log('Usuario registrado:', res.data) // Mensaje de depuración
       const newUser = res.data
       setUser(newUser)
       localStorage.setItem('loggedUser', JSON.stringify(newUser))

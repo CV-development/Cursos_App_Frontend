@@ -11,6 +11,7 @@ const CartProvider = ({ children }) => {
   const loadCart = async () => {
     try {
       const response = await api.get('/api/carro')
+      console.log('Carro cargado:', response.data) // Mensaje de depuración
       setCart(response.data)
     } catch (error) {
       console.error('Error al cargar el carrito:', error)
@@ -20,6 +21,7 @@ const CartProvider = ({ children }) => {
   const saveCart = async (newCart) => {
     try {
       await api.put('/api/carro', newCart)
+      console.log('Carro guardado:', newCart) // Mensaje de depuración
       setCart(newCart)
     } catch (error) {
       console.error('Error al guardar el carrito:', error)

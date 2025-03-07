@@ -10,6 +10,7 @@ export default function Gallery() {
     const fetchCursos = async () => {
       try {
         const res = await api.get('/api/cursos')
+        console.log('Cursos cargados en Gallery:', res.data) // Mensaje de depuración
         setCursos(res.data)
       } catch (error) {
         console.error('Error al obtener los cursos:', error)
