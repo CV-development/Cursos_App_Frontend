@@ -11,7 +11,7 @@ const CartProvider = ({ children }) => {
   const loadCart = async () => {
     try {
       const response = await api.get('/api/carro')
-      console.log('Carro cargado:', response.data) // Mensaje de depuración
+      console.log('Carro cargado:', response.data)
       setCart(response.data)
     } catch (error) {
       console.error('Error al cargar el carrito:', error)
@@ -21,46 +21,43 @@ const CartProvider = ({ children }) => {
   const saveCart = async (newCart) => {
     try {
       await api.put('/api/carro', newCart)
-      console.log('Carro guardado:', newCart) // Mensaje de depuración
+      console.log('Carro guardado:', newCart)
       setCart(newCart)
     } catch (error) {
       console.error('Error al guardar el carrito:', error)
     }
   }
 
-  const addToCart = (cursoId, idUsuario) => {
+  const addToCart = async (cursoId, idUsuario) => {
     const curso = cursos.find((c) => c.id === cursoId)
     if (!curso) {
       console.error('Curso no encontrado')
       return
     }
 
-    const userInCart = cart.find((item) => item.id_usuario === idUsuario)
-
-    let updatedCart
-    if (userInCart) {
-      const cursoExistente = userInCart.cursos.some((c) => c.id_curso === cursoId)
-      if (cursoExistente) {
-        console.log('El curso ya está en el carrito de compras de este usuario.')
-        return
-      }
-      updatedCart = cart.map((item) =>
-        item.id_usuario === idUsuario ? { ...item, cursos: [...item.cursos, { id_curso: curso.id, nombre: curso.titulo, precio: curso.precio }] } : item
-      )
-    } else {
-      updatedCart = [...cart, { id_usuario: idUsuario, cursos: [{ id_curso: curso.id, nombre: curso.titulo, precio: curso.precio }] }]
+    try {
+      const response = await api.post('/api/carro', { userId: idUsuario, courseId: cursoId })
+      console.log('Curso agregado al carro:', response.data)
+      setCart((prevCart) => [...prevCart, response.data])
+    } catch (error) {
+      console.error('Error al agregar curso al carrito:', error)
     }
-    saveCart(updatedCart)
   }
 
-  const deleteFromCart = (cursoId, idUsuario) => {
-    const updatedCart = cart.map((item) =>
-      item.id_usuario === idUsuario
-        ? { ...item, cursos: item.cursos.filter((c) => c.id_curso !== cursoId) }
-        : item
-    ).filter((item) => item.id_usuario !== idUsuario || item.cursos.length > 0)
-
-    saveCart(updatedCart)
+  const deleteFromCart = async (cursoId, idUsuario) => {
+    try {
+      await api.delete('/api/carro', { data: { userId: idUsuario, courseId: cursoId } })
+      console.log('Curso eliminado del carro')
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id_usuario === idUsuario
+            ? { ...item, cursos: item.cursos.filter((c) => c.id_curso !== cursoId) }
+            : item
+        ).filter((item) => item.id_usuario !== idUsuario || item.cursos.length > 0)
+      )
+    } catch (error) {
+      console.error('Error al eliminar curso del carrito:', error)
+    }
   }
 
   useEffect(() => {
