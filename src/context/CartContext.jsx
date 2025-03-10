@@ -8,9 +8,9 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   const { cursos } = useContext(CursosContext)
 
-  const loadCart = async () => {
+  const loadCart = async (userId) => {
     try {
-      const response = await api.get('/api/carro')
+      const response = await api.get(`/api/carro/${userId}`)
       console.log('Carro cargado:', response.data)
       setCart(response.data)
     } catch (error) {
@@ -46,22 +46,17 @@ const CartProvider = ({ children }) => {
 
   const deleteFromCart = async (cursoId, idUsuario) => {
     try {
-      await api.delete('/api/carro', { data: { userId: idUsuario, courseId: cursoId } })
+      await api.delete(`/api/carro/${idUsuario}/${cursoId}`)
       console.log('Curso eliminado del carro')
-      setCart((prevCart) =>
-        prevCart.map((item) =>
-          item.id_usuario === idUsuario
-            ? { ...item, cursos: item.cursos.filter((c) => c.id_curso !== cursoId) }
-            : item
-        ).filter((item) => item.id_usuario !== idUsuario || item.cursos.length > 0)
-      )
+      setCart(prev => prev.filter(item => item.id_curso !== cursoId))
     } catch (error) {
       console.error('Error al eliminar curso del carrito:', error)
     }
   }
 
   useEffect(() => {
-    loadCart()
+    const userId = obtenerUserIdDeAlgunLado() // Ej: desde localStorage
+    if(userId) loadCart(userId)
   }, [])
 
   return (
